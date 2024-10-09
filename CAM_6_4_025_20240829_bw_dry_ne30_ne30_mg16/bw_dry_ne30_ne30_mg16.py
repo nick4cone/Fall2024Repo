@@ -6,15 +6,18 @@ from cartopy.util import add_cyclic_point
 import cartopy.feature as cfeature
 
 # %%
-def GetColorLevs(var, numLevels):
-    return np.linspace(var.min(), var.max(), numLevels)
+def GetColorLevs(var, numLevels, valueRange=None):
+    if valueRange != None:
+        return np.linspace(valueRange[0], valueRange[1], numLevels)
+    else:
+        return np.linspace(var.min(), var.max(), numLevels)
 
 # %%
-def SpatialPlot(lon, lat, var, numLevels=10, cmap='plasma', 
+def SpatialPlot(lon, lat, var, numLevels=10, valueRange=None, cmap='plasma', 
                 titleStr='Add Title', cbarStr='Color Variable'):
     var_cyclic, lon = add_cyclic_point(var, coord=lon)
     fig, ax = plt.subplots(subplot_kw={'projection': ccrs.PlateCarree()})
-    clevs = GetColorLevs(var_cyclic, numLevels)
+    clevs = GetColorLevs(var_cyclic, numLevels, valueRange)
     cf = ax.contourf(lon, lat, var_cyclic, levels=clevs, cmap=cmap)
     ax.coastlines()
     ax.gridlines(linestyle = '--', color = 'black', draw_labels=True)
@@ -36,6 +39,14 @@ T_sfc_t0 = data.T[0,29,:,:].values  # time, lev, lat, lon
 lon = data.lon.values  # degrees East
 lat = data.lat.values
 
-Tparams = {'titleStr': 'Day 1 Surface Temperature',
-          'cbarStr': 'Temperature Kelvin'}
-SpatialPlot(lon, lat, T_sfc_t0, **Tparams)
+T_params = {'titleStr': 'Day 1 Surface Temperature',
+            'cbarStr': 'Temperature Kelvin'}
+SpatialPlot(lon, lat, T_sfc_t0, **T_params)
+
+U850 = data.U850[0,:,:].values  # time, lat, lon
+U850_params = {'titleStr': 'Day 1 850 hPa U',
+               'cbarStr': 'Velocity m/s',
+               'numLevels': 9,
+               'valueRange': (-40, 40),
+               'cmap': 'PiYG'}
+SpatialPlot(lon, lat, U850, **U850_params)
