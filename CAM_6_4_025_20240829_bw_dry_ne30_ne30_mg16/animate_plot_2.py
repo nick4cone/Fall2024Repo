@@ -14,11 +14,12 @@ import cartopy.feature as cfeature
 import matplotlib.animation as animation 
 from functools import partial
 
-def UpdatePlot(frame, lon, lat, clevs, cmap):
+def UpdatePlot(frame, lon, lat, cmap):
     var = data.T[frame,29,:,:].values  # time, lev, lat, lon
     ax.clear()
     ax.set_title(f'Day {frame+1} Surface Temperature')
-    ax.contourf(lon, lat, var, levels=clevs, cmap=cmap)
+    ax.pcolormesh(lon, lat, var, cmap=cmap)
+    ax.coastlines()
 
 # import the data
 Root = '/Users/nforcone/Documents/Fall2024/data/'
@@ -38,8 +39,7 @@ fig, ax = plt.subplots(subplot_kw={'projection': ccrs.PlateCarree()})
 movie = animation.FuncAnimation(fig, 
                                 partial(UpdatePlot, 
                                         lon=lon, 
-                                        lat=lat, 
-                                        clevs=clevs, 
+                                        lat=lat,
                                         cmap=cmap), 
                                 frames = np.arange(0, 10),
-                                repeat=False)
+                                repeat=True)
