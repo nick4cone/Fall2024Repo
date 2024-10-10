@@ -43,3 +43,6 @@ movie = animation.FuncAnimation(fig,
                                         cmap=cmap), 
                                 frames = np.arange(0, 10),
                                 repeat=True)
+# movie.save(filename="/Users/nforcone/Documents/Fall2024/Fall2024Repo/"
+#            "CAM_6_4_025_20240829_bw_dry_ne30_ne30_mg16/Figures/"
+#            "T_sfc_day1_anim.gif", writer="pillow")

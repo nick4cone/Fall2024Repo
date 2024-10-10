@@ -42,6 +42,9 @@ lat = data.lat.values
 T_params = {'titleStr': 'Day 1 Surface Temperature',
             'cbarStr': 'Temperature Kelvin'}
 SpatialPlot(lon, lat, T_sfc_t0, **T_params)
+# plt.savefig('/Users/nforcone/Documents/Fall2024/Fall2024Repo/'
+#             'CAM_6_4_025_20240829_bw_dry_ne30_ne30_mg16/'
+#             'Figures/T_sfc_day1', dpi=300)
 
 U850 = data.U850[0,:,:].values  # time, lat, lon
 U850_params = {'titleStr': 'Day 1 850 hPa U',
@@ -50,3 +53,6 @@ U850_params = {'titleStr': 'Day 1 850 hPa U',
                'valueRange': (-40, 40),
                'cmap': 'PiYG'}
 SpatialPlot(lon, lat, U850, **U850_params)
+# plt.savefig('/Users/nforcone/Documents/Fall2024/Fall2024Repo/'
+#             'CAM_6_4_025_20240829_bw_dry_ne30_ne30_mg16/'
+#             'Figures/U850_day1', dpi=300)
