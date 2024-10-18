@@ -27,7 +27,7 @@ def UpdatePlot(frame, lon, lat, MyNorm, cmap):
 
 # import the data
 Root = '/glade/derecho/scratch/nforcone/CAM_6_4_025_20240829_bw_wet_ne30_ne30_mg16/run/'
-f = 'CAM_6_4_025_20240829_bw_wet_ne30_ne30_mg16.cam.h0i.0001-01-02-00000.nc'
+f = 'CAM_6_4_025_20240829_bw_wet_ne30_ne30_mg16.cam.h0i.0001-01-02-00000_default.nc'
 filePath = Root + f
 data = xa.open_dataset(filePath)
 
