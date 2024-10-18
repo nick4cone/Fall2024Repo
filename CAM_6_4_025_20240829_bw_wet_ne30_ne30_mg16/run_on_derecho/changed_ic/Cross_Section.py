@@ -35,8 +35,9 @@ ax.set_title(f'Day 10 Zonal Wind at Longitude {myLon:.2f} E', size=labelSize)
 mesh = ax.contourf(lat, lev, var)
 cbar = plt.colorbar(mesh, ax=ax)
 cbar.set_label('Zonal Wind m/s', size=labelSize)
-plt.show()
 
 plt.savefig("/glade/u/home/nforcone/Fall2024Repo/"
             "CAM_6_4_025_20240829_bw_wet_ne30_ne30_mg16/"
-            "run_on_derecho/Figures/Cross_Section_bw_wet_new_ic.png", dpi=300)
+            "run_on_derecho/Figures/Cross_Section_bw_wet_New_IC.png", dpi=300)
+
+plt.show()
