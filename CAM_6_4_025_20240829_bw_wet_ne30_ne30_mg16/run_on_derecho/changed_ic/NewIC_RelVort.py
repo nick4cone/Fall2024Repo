@@ -49,7 +49,7 @@ bounds = np.arange(-0.00008, 0.00008, step=0.00002)  # -0.00008 to 0.00008, step
 normBounded = norm = mpl.colors.BoundaryNorm(bounds, cmap.N, extend='both')
 SM = cm.ScalarMappable(norm=normObj, cmap=cmap)
 SM_bounded = cm.ScalarMappable(norm=normBounded, cmap=cmap)
-fig.colorbar(SM_bounded, ax=ax, shrink=0.55, label=r'Relative Vorticity [$s^-1$]')
+fig.colorbar(SM_bounded, ax=ax, shrink=0.55, label=r'Relative Vorticity [$s^{-1}$]')
 
 movie = animation.FuncAnimation(fig, 
                                 partial(UpdatePlot, 
